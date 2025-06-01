@@ -2,12 +2,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { setToken } from "../redux/authSlice"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 console.log(BACKEND_URL)
 
 const Login = () => {
+  const dispatch = useDispatch();
     const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,6 +25,9 @@ const Login = () => {
 
      
       localStorage.setItem("token", token);
+     dispatch(setToken(token));
+
+
       
       alert("Login successful!");
        navigate("/dashboard");
