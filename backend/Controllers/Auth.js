@@ -101,7 +101,7 @@ async function getEmployse(req, res) {
 
     const users = await prisma.t_Employee.findFirst({
       where: {
-        id: id, // 👈 id is already a string
+        id: id, 
       },
     });
 
